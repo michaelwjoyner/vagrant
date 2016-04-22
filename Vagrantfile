@@ -8,11 +8,18 @@
 Vagrant.configure(2) do |config|
  
   # Michaels hacks
-  config.vm.hostname = "vps"
+  config.vm.hostname = "wrs.local"
 
   # The most common configuration options are documented and commented below.
   # For a complete reference, please see the online documentation at
   # https://docs.vagrantup.com.
+  
+  
+  config.vm.provider :virtualbox do |v|
+     v.name = config.vm.hostname 
+     v.memory = "4096"
+     v.cpus = "1"
+  end
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
