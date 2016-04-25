@@ -13,13 +13,6 @@ Vagrant.configure(2) do |config|
   # The most common configuration options are documented and commented below.
   # For a complete reference, please see the online documentation at
   # https://docs.vagrantup.com.
-  
-  
-  config.vm.provider :virtualbox do |v|
-     v.name = config.vm.hostname 
-     v.memory = "4096"
-     v.cpus = "1"
-  end
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
@@ -48,19 +41,26 @@ Vagrant.configure(2) do |config|
   # the path on the host to the actual folder. The second argument is
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
-  config.vm.synced_folder "./html", "/var/www/html"
+  config.vm.synced_folder "./html", 
+                          "/var/www/html", 
+                          "group":"www-data",
+                          "owner":"www-data",
+                          "mount_options":[
+                              "dmode=775",
+                              "fmode=774"
+                          ]
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
   # Example for VirtualBox:
   #
-  # config.vm.provider "virtualbox" do |vb|
-  #   # Display the VirtualBox GUI when booting the machine
-  #   vb.gui = true
-  #
-  #   # Customize the amount of memory on the VM:
-  #   vb.memory = "1024"
-  # end
+  
+  config.vm.provider "virtualbox" do |vb|
+     # vb.gui = true
+     vb.name = config.vm.hostname 
+     vb.memory = "5120"
+  end
+
   #
   # View the documentation for the provider you are using for more
   # information on available options.
