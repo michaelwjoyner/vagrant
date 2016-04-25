@@ -8,7 +8,7 @@
 Vagrant.configure(2) do |config|
  
   # Michaels hacks
-  config.vm.hostname = "wrs.local"
+  config.vm.hostname = "vps.local"
 
 
   # The most common configuration options are documented and commented below.
