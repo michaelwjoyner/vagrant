@@ -10,6 +10,7 @@ Vagrant.configure(2) do |config|
   # Michaels hacks
   config.vm.hostname = "wrs.local"
 
+
   # The most common configuration options are documented and commented below.
   # For a complete reference, please see the online documentation at
   # https://docs.vagrantup.com.
